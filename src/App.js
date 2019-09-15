@@ -28,7 +28,7 @@ const Footer = () => (
 
 const history = createBrowserHistory()
 
-const pageTrans = 'trans'
+const pageTrans = 'trans toRight'
 const classNames = {
   appear: `${pageTrans} appear`,
   appearActive: `${pageTrans} appear active`,

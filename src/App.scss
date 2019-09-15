@@ -41,21 +41,10 @@ $timing: 200ms;
 
   &.enter {
     z-index: 10;
-    opacity: 0;
-
-    &.active,
-    &.done {
-        opacity: 1;
-    }
   }
 
   &.exit {
     z-index: 9;
-
-    &.active,
-    &.done {
-      opacity: 0;
-    }
   }
 
   &.active {
@@ -65,5 +54,113 @@ $timing: 200ms;
   &.done {
     position: relative !important;
     transform: none !important;
+  }
+}
+
+.toLeft.enter {
+  @include fill;
+  transform: translateX(-20px);
+
+  &.active,
+  &.done {
+    transform: translateX(0);
+  }
+
+  + .exit {
+    transform: translateX(0) !important;
+
+    &.active {
+      transform: translateX(20px) !important;
+    }
+  }
+}
+
+.toLeft.exit {
+  @include fill;
+
+  &.active {
+    transform: translateX(20px);
+  }
+
+  + .enter {
+    transform: translateX(-20px) !important;
+
+    &.active,
+    &.done {
+      transform: translateX(0) !important;
+    }
+  }
+}
+
+
+.toRight.enter {
+  @include fill;
+  transform: translateX(20px);
+
+  &.active,
+  &.done {
+    transform: translateX(0);
+  }
+
+  + .exit {
+    transform: translateX(0) !important;
+
+    &.active,
+    &.done {
+      transform: translateX(-20px) !important;
+    }
+  }
+}
+
+.toRight.exit {
+  @include fill;
+
+  &.active {
+    transform: translateX(-20px);
+  }
+
+  + .enter {
+    transform: translateX(20px) !important;
+
+    &.active,
+    &.done {
+      transform: translateX(0) !important;
+    }
+  }
+}
+
+.enter {
+  opacity: 0;
+
+  &.active,
+  &.done {
+    opacity: 1;
+  }
+}
+
+.exit {
+  opacity: 1;
+
+  &.active,
+  &.done {
+    opacity: 0;
+  }
+}
+
+
+.default-trans-enter {
+  @include fill;
+  transform: translateX(20px);
+
+  &.default-trans-enter-active {
+    transform: translateX(0);
+  }
+}
+
+.default-trans-exit {
+  @include fill;
+
+  &.default-trans-exit-active {
+    transform: translateX(-20px);
   }
 }
