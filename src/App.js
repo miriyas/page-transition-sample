@@ -1,7 +1,9 @@
-import React from 'react';
-import { Switch, Route, Router, Link } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Switch, Route, Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { PageTransContext } from './contexts/pageTransContext';
+import Footer from './Footer';
 
 import './App.scss';
 import image1 from './image1.jpg';
@@ -16,32 +18,23 @@ const Page3 = () => <div className="page" style={{ backgroundImage: `url(${image
 const Page4 = () => <div className="page" style={{ backgroundImage: `url(${image4})`}} />;
 const Page5 = () => <div className="page" style={{ backgroundImage: `url(${image5})`}} />;
 
-const Footer = () => (
-  <nav className="footer">
-    <Link to='/'>쯔위</Link>
-    <Link to='/2'>손나은</Link>
-    <Link to='/3'>수지</Link>
-    <Link to='/4'>아이유</Link>
-    <Link to='/5'>설현</Link>
-  </nav>
-)
-
 const history = createBrowserHistory()
 
-const pageTrans = 'trans toRight'
-const classNames = {
-  appear: `${pageTrans} appear`,
-  appearActive: `${pageTrans} appear active`,
-  appearDone: `${pageTrans} appear done`,
-  enter: `${pageTrans} enter`,
-  enterActive: `${pageTrans} enter active`,
-  enterDone: `${pageTrans} enter done`,
-  exit: `${pageTrans} exit`,
-  exitActive: `${pageTrans} exit active`,
-  exitDone: `${pageTrans} exit done`
-}
-
 function App() {
+  let { pageTrans } = useContext(PageTransContext)
+
+  const classNames = {
+    appear: `${pageTrans} appear`,
+    appearActive: `${pageTrans} appear active`,
+    appearDone: `${pageTrans} appear done`,
+    enter: `${pageTrans} enter`,
+    enterActive: `${pageTrans} enter active`,
+    enterDone: `${pageTrans} enter done`,
+    exit: `${pageTrans} exit`,
+    exitActive: `${pageTrans} exit active`,
+    exitDone: `${pageTrans} exit done`
+  }
+
   return (
     <Router history={history}>
       <Route
